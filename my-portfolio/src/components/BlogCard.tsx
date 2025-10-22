@@ -68,16 +68,16 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
   };
 
   return (
-    <div className="p-4 bg-white rounded-2xl shadow hover:shadow-lg transition relative">
+    <div className="p-8 bg-zinc-200 rounded-xl  shadow hover:shadow-lg transition relative">
       {coverImage && (
         <img
           src={coverImage}
           alt={title}
-          className="w-full h-40 object-cover rounded-lg mb-3"
+          className="w-full h-40 object-cover rounded-lg mb-6"
         />
       )}
-      <h2 className="text-xl font-semibold mb-1">{title}</h2>
-      <div className="flex flex-wrap gap-2 mb-3">
+      <h2 className="text-xl font-semibold mb-3">{title}</h2>
+      <div className="flex flex-wrap gap-2 mb-6">
         {tags?.map((tag) => (
           <span
             key={tag}
@@ -97,16 +97,16 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
         </Link>
 
         {isOwner && (
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             <Link
               href={`/blogs/edit/${slug}`}
-              className="bg-transparent text-blue-500 px-3 py-1  hover:text-blue-600 text-sm flex items-center gap-1"
+              className="bg-transparent font-bold text-blue-500  hover:text-blue-600 flex items-center gap-1"
             >
-              <FiEdit /> Edit
+              <FiEdit />
             </Link>
             <button
               onClick={handleDelete}
-              className="bg-transparent text-red-600 px-3 py-1  hover:text-red-700 text-sm flex items-center gap-1"
+              className="bg-transparent cursor-pointer font-bold text-red-600  hover:text-red-700  flex items-center gap-1"
             >
               <FiTrash2 /> 
             </button>

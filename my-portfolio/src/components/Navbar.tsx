@@ -99,7 +99,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-full px-4 left-0 w-full bg-gray-100 shadow-sm flex flex-col items-end py-4 space-y-2 md:hidden z-50">
+        <div className="absolute top-full px-4 py-12 left-0 w-full bg-gray-200 shadow-sm flex flex-col items-end space-y-2 md:hidden z-50">
           <Link href="#about" onClick={() => setMenuOpen(false)} className="text-[#17a24a] hover:text-[#22bd5b]">
             About Me
           </Link>

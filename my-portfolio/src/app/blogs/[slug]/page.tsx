@@ -6,31 +6,33 @@ import api from "@/utils/api";
 import toast from "react-hot-toast";
 import Link from "next/link";
 
-export default function BlogDetailsPage() {
-  const { slug } = useParams();
-  const [blog, setBlog] = useState<any>(null);
+export const revalidate = 60; // Revalidate each post every 1 minute
 
-  useEffect(() => {
-    async function fetchBlog() {
-      try {
-        const res = await api.get(`/blogs/${slug}`);
-        setBlog(res.data);
-      } catch {
-        toast.error("Blog not found");
-      }
-    }
-    if (slug) fetchBlog();
-  }, [slug]);
+export async function generateStaticParams() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
+  const blogs = await res.json();
 
-  const handleDelete = async () => {
-    if (confirm("Are you sure you want to delete this blog?")) {
-      await api.delete(`/blogs/${slug}`);
-      toast.success("Blog deleted successfully");
-      window.location.href = "/blogs";
-    }
-  };
+  return blogs.map((b: any) => ({
+    slug: b.id.toString(),
+  }));
+}
 
-  if (!blog) return <p className="text-center mt-20">Loading...</p>;
+export default async function BlogDetailsPage({ params }: { params: { slug: string } }) {
+
+
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs/${params.slug}`, {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    return <p className="text-center mt-20">Blog not found</p>;
+  }
+
+  const blog = await res.json();
+ if (!blog) return <p className="text-center mt-20">Loading...</p>;
+
+ 
 
   return (
     <main className="max-w-3xl mx-auto py-10 px-4">

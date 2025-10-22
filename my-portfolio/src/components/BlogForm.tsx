@@ -42,7 +42,7 @@ export default function BlogForm({ initialData, slug, isEdit }: BlogFormProps) {
         });
         toast.success("Blog updated successfully!");
       } else {
-        await api.post("/blogs", {
+        await api.post("/blogs/new-blog", {
           title,
           content,
           tags: tagArray,
