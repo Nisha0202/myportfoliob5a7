@@ -3,12 +3,13 @@
 import { useState } from "react";
 import api from "@/utils/api";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -21,6 +22,7 @@ export default function LoginForm() {
       localStorage.setItem("token", res.data.token);
       setEmail("");
       setPassword("");
+      router.push("/");
     } catch (err: any) {
       const msg =
         err.response?.data?.message || "Something went wrong. Try again.";
