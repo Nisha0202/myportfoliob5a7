@@ -26,15 +26,12 @@ export default function Navbar() {
           <Link href="#projects" className="text-[#17a24a] hover:text-[#22bd5b]">
             Projects
           </Link>
-              <Link href="#blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
+              <Link href="/blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
             Blogs
           </Link>
            
-              <Link href="#blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
-            Create Blogs
-          </Link>
-            <Link href="#blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
-            Create Blogs
+            <Link href="#resume" className="text-[#17a24a] hover:text-[#22bd5b]">
+            Resume
           </Link>
         
         </div>

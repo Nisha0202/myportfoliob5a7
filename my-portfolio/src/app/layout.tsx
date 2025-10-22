@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen min-w-screen">
-        <Navbar />
+     <Navbar/>
         <Toaster position="top-center" />
         {children}
       </body>
