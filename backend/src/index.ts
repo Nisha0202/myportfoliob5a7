@@ -4,7 +4,7 @@ import 'dotenv/config';
 import bodyParser from "body-parser";
 import authRoutes from "./routes/auth";
 import prisma from "./prisma";
-
+import blogRoutes from "./routes/blog";
 
 async function main() {
   //  Try to connect to the database first
@@ -21,7 +21,7 @@ async function main() {
   app.use(bodyParser.json());
 
   app.use("/api/auth", authRoutes);
-
+app.use("/api/blogs", blogRoutes);
   const PORT = process.env.PORT || 4000;
 
   app.listen(PORT, () => {

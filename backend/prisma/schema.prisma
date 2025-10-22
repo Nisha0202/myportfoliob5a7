@@ -17,3 +17,14 @@ model User {
   role      String   @default("admin")
   createdAt DateTime @default(now())
 }
+
+model Blog {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String    @unique
+  content     String
+  tags        String[]  // ["Next.js", "Tailwind", "TypeScript"]
+  coverImage  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
