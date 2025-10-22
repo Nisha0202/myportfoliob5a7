@@ -1,10 +1,3 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import api from "@/utils/api";
-import toast from "react-hot-toast";
-import Link from "next/link";
 
 export const revalidate = 60; // Revalidate each post every 1 minute
 

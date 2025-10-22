@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import api from "@/utils/api";
-import toast, { Toaster, Toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 
@@ -37,7 +37,7 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
                 toast.dismiss(t.id);
                 setToastId(null);
                 try {
-                  const token = localStorage.getItem("token");
+              
                   await api.delete(`/blogs/${slug}`);
                   toast.success("Blog deleted successfully!")
                   router.push("/blogs");
@@ -68,7 +68,7 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
   };
 
   return (
-    <div className="p-8 bg-zinc-200 rounded-xl  shadow hover:shadow-lg transition relative">
+    <div className="p-8 bg-zinc-200 rounded-xl  shadow hover:shadow-lg transition relative h-96">
       {coverImage && (
         <img
           src={coverImage}
@@ -76,7 +76,7 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
           className="w-full h-40 object-cover rounded-lg mb-6"
         />
       )}
-      <h2 className="text-xl font-semibold mb-3">{title}</h2>
+      <h2 className="text-lg font-semibold mb-3">{title}</h2>
       <div className="flex flex-wrap gap-2 mb-6">
         {tags?.map((tag) => (
           <span
@@ -88,7 +88,7 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
         ))}
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center z-10 absolute bottom-8 left-8 right-8">
         <Link
           href={`/blogs/${slug}`}
           className="text-[#22bd5b] hover:underline text-base"
@@ -113,7 +113,7 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
           </div>
         )}
       </div>
-      <Toaster />
+     
     </div>
   );
 }

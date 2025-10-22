@@ -54,7 +54,7 @@ export default function Navbar() {
       <Toaster />
       {/* Logo */}
       <Link href="/" className="logo font-bold text-[#3a443e]">
-        Nisha.Portfolio
+        Alex.Portfolio
       </Link>
 
       {/* Desktop Menu */}
@@ -68,9 +68,8 @@ export default function Navbar() {
         <Link href={isLoggedIn ? "/blogs" : "/blogs"} className="text-[#17a24a] hover:text-[#22bd5b]">
           {isLoggedIn ? "Manage Blogs" : "Blogs"}
         </Link>
-        <Link href="#resume" className="text-[#17a24a] hover:text-[#22bd5b]">
-          Resume
-        </Link>
+   
+
 
         {isLoggedIn ? (
           <button
@@ -109,9 +108,7 @@ export default function Navbar() {
           <Link href={isLoggedIn ? "/blogs" : "/blogs"} onClick={() => setMenuOpen(false)} className="text-[#17a24a] hover:text-[#22bd5b]">
             {isLoggedIn ? "Manage Blogs" : "Blogs"}
           </Link>
-          <Link href="#resume" onClick={() => setMenuOpen(false)} className="text-[#17a24a] hover:text-[#22bd5b]">
-            Resume
-          </Link>
+    
 
           {isLoggedIn ? (
             <button

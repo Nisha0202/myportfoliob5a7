@@ -30,9 +30,26 @@ export default function BlogForm({ initialData, slug, isEdit }: BlogFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // --- Validation ---
+    const wordCount = title.trim().split(/\s+/).filter(Boolean).length;
+    if (wordCount > 7) {
+      toast.error("Title cannot be more than 7 words.");
+      return; // Stop submission
+    }
+
+    const tagArray = tags
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean); // filter(Boolean) removes empty strings
+    if (tagArray.length > 3) {
+      toast.error("You can add a maximum of 3 tags.");
+      return; // Stop submission
+    }
+    // --- End Validation ---
+
     setLoading(true);
     try {
-      const tagArray = tags.split(",").map((t) => t.trim());
       if (isEdit) {
         await api.put(`/blogs/${slug}`, {
           title,
@@ -66,28 +83,28 @@ export default function BlogForm({ initialData, slug, isEdit }: BlogFormProps) {
       onSubmit={handleSubmit}
       className="bg-transparent mt-8 mb-12 sm:mt-24 py-8 px-10 sm:border-2 border-gray-300 rounded-md space-y-5 max-w-2xl mx-auto"
     >
-        <div className="flex flex-row justify-between items-center mb-6"> 
-              <div className="text-xl font-semibold  text-gray-800">
-        {isEdit ? "Edit Blog" : "Create New Blog"}
-      </div>
-      <div>
-                  <button
-                      type="submit"
-                      disabled={isDisabled}
-                      className={`py-2 px-4 text-sm rounded-sm text-gray-50 ${isDisabled
-                              ? "bg-gray-400 cursor-not-allowed"
-                              : "bg-[#17a24a] hover:bg-[#22bd5b]"
-                          }`}
-                  >
-                      {loading ? "Saving..." : isEdit ? "Update Blog" : "Create Blog"}
-                  </button>
-      </div>
-      
+      <div className="flex flex-row justify-between items-center mb-6">
+        <div className="text-xl font-semibold  text-gray-800">
+          {isEdit ? "Edit Blog" : "Create New Blog"}
         </div>
-   
+        <div>
+          <button
+            type="submit"
+            disabled={isDisabled}
+            className={`py-2 px-4 text-sm rounded-sm text-gray-50 ${
+              isDisabled
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-[#17a24a] hover:bg-[#22bd5b]"
+            }`}
+          >
+            {loading ? "Saving..." : isEdit ? "Update Blog" : "Create Blog"}
+          </button>
+        </div>
+      </div>
+
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Title (Max 7 words)"
         className="w-full border text-sm p-2 rounded-sm"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -101,14 +118,17 @@ export default function BlogForm({ initialData, slug, isEdit }: BlogFormProps) {
       />
       <input
         type="text"
-        placeholder="Tags (comma separated)"
+        placeholder="Tags (Max 3, comma separated)"
         className="w-full text-sm border p-2 rounded-sm"
         value={tags}
         onChange={(e) => setTags(e.target.value)}
       />
-      <ReactQuill className=" mt-4 w-full max-w-full overflow-x-auto" value={content} onChange={setContent} theme="snow" />
-
-
+      <ReactQuill
+        className=" mt-4 w-full max-w-full overflow-x-auto"
+        value={content}
+        onChange={setContent}
+        theme="snow"
+      />
     </form>
   );
 }
