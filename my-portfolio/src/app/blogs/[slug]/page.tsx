@@ -46,20 +46,8 @@ export default function BlogDetailsPage() {
         className="prose max-w-none"
         dangerouslySetInnerHTML={{ __html: blog.content }}
       />
-      <div className="flex gap-3 mt-6">
-        <Link
-          href={`/blogs/edit/${blog.slug}`}
-          className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600"
-        >
-          Edit
-        </Link>
-        <button
-          onClick={handleDelete}
-          className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-        >
-          Delete
-        </button>
-      </div>
+   
+     
     </main>
   );
 }
