@@ -26,10 +26,20 @@ export default function Navbar() {
           <Link href="#projects" className="text-[#17a24a] hover:text-[#22bd5b]">
             Projects
           </Link>
-          {/* Add more links as needed */}
+              <Link href="#blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
+            Blogs
+          </Link>
+           
+              <Link href="#blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
+            Create Blogs
+          </Link>
+            <Link href="#blogs" className="text-[#17a24a] hover:text-[#22bd5b]">
+            Create Blogs
+          </Link>
+        
         </div>
 
-        {/* Login Button - positioned to the right */}
+    
         <button
           onClick={handleLoginClick}
           className="bg-transparent px-4 py-2 text-[#17a24a] hover:text-[#22bd5b] font-bold cursor-pointer focus:outline-none "
