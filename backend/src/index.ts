@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import authRoutes from "./routes/auth";
 import prisma from "./prisma";
 import blogRoutes from "./routes/blog";
+import projectRoutes from "./routes/project";
 
 async function main() {
   //  Try to connect to the database first
@@ -21,7 +22,10 @@ async function main() {
   app.use(bodyParser.json());
 
   app.use("/api/auth", authRoutes);
-app.use("/api/blogs", blogRoutes);
+  app.use("/api/blogs", blogRoutes);
+  app.use("/api/projects", projectRoutes);
+
+
   const PORT = process.env.PORT || 4000;
 
   app.listen(PORT, () => {

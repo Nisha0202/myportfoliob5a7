@@ -6,7 +6,7 @@ export async function generateStaticParams() {
   const blogs = await res.json();
 
   return blogs.map((b: any) => ({
-    slug: b.id.toString(),
+    slug: b.slug
   }));
 }
 
