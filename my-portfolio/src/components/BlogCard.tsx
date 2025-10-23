@@ -68,7 +68,7 @@ export default function BlogCard({ title, slug, tags, coverImage }: BlogCardProp
   };
 
   return (
-    <div className="p-8 bg-zinc-200 rounded-xl  shadow hover:shadow-lg transition relative h-96">
+    <div className="p-8 max-w-sm bg-zinc-200 rounded-xl  shadow hover:shadow-lg transition relative h-96">
       {coverImage && (
         <img
           src={coverImage}

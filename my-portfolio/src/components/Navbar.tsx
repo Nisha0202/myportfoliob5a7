@@ -62,9 +62,13 @@ export default function Navbar() {
         <Link href="/about" className="text-[#17a24a] hover:text-[#22bd5b] transition-colors">
           About Me
         </Link>
-        <Link href="#projects" className="text-[#17a24a] hover:text-[#22bd5b]">
-          Projects
+
+         <Link href={isLoggedIn ? "/projects" : "/projects"} className="text-[#17a24a] hover:text-[#22bd5b]">
+          {isLoggedIn ? "Manage Projects" : "Projects"}
         </Link>
+   
+
+
         <Link href={isLoggedIn ? "/blogs" : "/blogs"} className="text-[#17a24a] hover:text-[#22bd5b]">
           {isLoggedIn ? "Manage Blogs" : "Blogs"}
         </Link>

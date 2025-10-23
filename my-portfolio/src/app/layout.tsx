@@ -5,8 +5,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Nisha's Portfolio",
-  description: "Jabatun Nessa Nisha - Portfolio Website",
+  title: "Alex's Portfolio",
+  description: "Alex Chen - Portfolio Website",
 };
 
 
