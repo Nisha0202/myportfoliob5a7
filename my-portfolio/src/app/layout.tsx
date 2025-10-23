@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen min-w-screen">
+      <body className="min-h-screen w-full overflow-x-hidden">
      <Navbar/>
         <Toaster position="top-center" />
         {children}
