@@ -33,7 +33,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md  py-14 px-10 border-2 border-gray-300 rounded-md">
+    <div className="w-full max-w-md  py-14 px-10 border-2 border-gray-400 rounded-md">
       <h2 className="text-xl font-semibold text-center mb-6 text-gray-800">
         Admin Login
       </h2>

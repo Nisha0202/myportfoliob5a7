@@ -72,7 +72,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   };
 
   return (
-    <div className="p-6 bg-zinc-200 border-2 border-gray-300 rounded-xl shadow hover:shadow-lg transition relative flex flex-col h-[450px]">
+    <div className="p-6 bg-zinc-200 border-2 border-gray-300 rounded-xl hover:shadow-md transition relative flex flex-col h-[510px]">
       {project.thumbnail ? (
         <Image
           src={project.thumbnail}
@@ -89,9 +89,16 @@ export default function ProjectCard({ project }: { project: Project }) {
       )}
 
       <h2 className="text-lg font-semibold mb-2">{project.title}</h2>
-      <p className="text-gray-700 text-sm line-clamp-3 mb-4">
-        {project.description}
-      </p>
+      <p className="text-gray-800 text-sm mb-3">{project.description}</p>
+
+      {/* Features Section */}
+      {project.features?.length > 0 && (
+        <ul className="text-gray-700 text-sm mb-5 list-disc list-inside space-y-1 h-auto">
+          {project.features.map((feature, index) => (
+            <li key={index}>{feature}</li>
+          ))}
+        </ul>
+      )}
 
       <div className="flex flex-wrap gap-2 mb-4">
         {project.techStack.map((tech) => (
@@ -119,11 +126,11 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       {isOwner && (
         <div className="absolute bottom-6 right-4 flex gap-4">
-          <Link href={`/projects/edit/${project.id}`} className="text-blue-500  hover:text-blue-600">
-            <FiEdit size={22} />
+          <Link href={`/projects/edit/${project.id}`} className="text-blue-500 hover:text-blue-600">
+            <FiEdit size={20} />
           </Link>
-          <button onClick={handleDelete} className="text-red-600  hover:text-red-700">
-            <FiTrash2 size={22} />
+          <button onClick={handleDelete} className="text-red-600 hover:text-red-700">
+            <FiTrash2 size={20} />
           </button>
         </div>
       )}

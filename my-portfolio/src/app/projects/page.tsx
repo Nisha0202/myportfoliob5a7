@@ -1,11 +1,11 @@
 import ProjectCard from "@/components/ProjectCard";
 import NewProjectButton from "@/components/NewProjectButton";
 
-export const revalidate = 60;
+export const revalidate = 30;
 
 export default async function ProjectsPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-    next: { revalidate: 60 },
+    next: { revalidate: 30 },
   });
   const projects = await res.json();
 

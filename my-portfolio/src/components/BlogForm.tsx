@@ -81,7 +81,7 @@ export default function BlogForm({ initialData, slug, isEdit }: BlogFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-transparent mt-8 mb-12 sm:mt-24 py-8 px-10 sm:border-2 border-gray-300 rounded-md space-y-5 max-w-2xl mx-auto"
+      className="bg-transparent mt-8 mb-12 sm:mt-24 py-8 px-10 sm:border-2 border-gray-400 rounded-md space-y-5 max-w-2xl mx-auto"
     >
       <div className="flex flex-row justify-between items-center mb-6">
         <div className="text-xl font-semibold  text-gray-800">
